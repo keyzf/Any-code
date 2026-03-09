@@ -99,6 +99,13 @@ export const MODEL_PRICING: Record<string, ModelPricing> = {
     cacheWrite: 0,    // OpenAI cache write 免费
     cacheRead: 0.25   // $0.25 cached input (via OpenRouter: $0.625)
   },
+  // GPT-5.4 Fast Mode - 1.5x 加速，积分消耗 2x（仅限 ChatGPT 订阅用户）
+  'gpt-5.4-fast': {
+    input: 5.00,      // 标准价 x2
+    output: 30.00,    // 标准价 x2
+    cacheWrite: 0,
+    cacheRead: 0.50
+  },
   // GPT-5.4 Pro - 高计算版本
   'gpt-5.4-pro': {
     input: 30.00,     // $30.00 / 1M input tokens
@@ -322,6 +329,9 @@ export function getPricingForModel(model?: string, engine?: string): ModelPricin
   // GPT-5.4 系列（最新旗舰）
   if (normalized.includes('5.4-pro') || normalized.includes('5_4_pro')) {
     return MODEL_PRICING['gpt-5.4-pro'];
+  }
+  if (normalized.includes('5.4') && normalized.includes('fast')) {
+    return MODEL_PRICING['gpt-5.4-fast'];
   }
   if (normalized.includes('gpt-5.4') || normalized.includes('gpt5.4') || normalized.includes('gpt_5_4')) {
     return MODEL_PRICING['gpt-5.4'];

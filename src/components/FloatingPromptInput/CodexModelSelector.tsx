@@ -29,7 +29,7 @@ const DEFAULT_CODEX_MODELS: CodexModelConfig[] = [
   {
     id: 'gpt-5.4',
     name: 'GPT-5.4',
-    description: '最强旗舰模型，1M 上下文，原生计算机使用（2026年3月）',
+    description: '最强旗舰模型，1M 上下文，支持 /fast（2026年3月）',
     icon: <Star className="h-4 w-4 text-purple-500" />,
     isDefault: true,
   },

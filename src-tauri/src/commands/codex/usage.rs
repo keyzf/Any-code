@@ -105,6 +105,15 @@ fn get_codex_pricing(model: &str) -> ModelPricing {
         };
     }
 
+    // GPT-5.4 Fast Mode (1.5x speed, 2x credit consumption)
+    if normalized.contains("5.4") && normalized.contains("fast") {
+        return ModelPricing {
+            input: 5.00,
+            output: 30.00,
+            cache_read: 0.50,
+        };
+    }
+
     // GPT-5.4 (latest flagship - March 2026)
     if normalized.contains("gpt-5.4") || normalized.contains("gpt5.4")
         || normalized.contains("gpt_5_4") || normalized.contains("5.4") {
